@@ -9,10 +9,15 @@ var inkFile = fs.readFileSync('./data/story.json', 'UTF-8').replace(/^\uFEFF/, '
 
 var myStory = new Story(inkFile);
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('The Intercept - Inkjs-Express Demo'))
 
 app.get('/version', function(req, res){
   res.json({ version: "1.0" })
+})
+
+app.get('/restart', function(req, res){
+  myStory = new Story(inkFile);
+  res.redirect('/continue')
 })
 
 app.get('/continue', function(req, res){
@@ -47,4 +52,4 @@ app.get('/continue', function(req, res){
 })
 
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+app.listen(port, () => console.log(`Inkjs-Express listening at http://localhost:${port}`))
