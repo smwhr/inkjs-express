@@ -26,9 +26,15 @@ app.get('/continue', function(req, res){
   let userChoice = req.query.choice;
   if(userChoice){
     console.log(userChoice)
-    myStory.ChooseChoiceIndex(parseInt(userChoice) - 1);
-    res.redirect('/continue')
-    return;
+    try{
+      myStory.ChooseChoiceIndex(parseInt(userChoice) - 1);  
+      res.redirect('/continue')
+      return;
+    }catch(e){
+      res.status(400).json({ status: "error", message: e.message })
+    }
+    
+    
   }
 
   var paragraphs = [];
