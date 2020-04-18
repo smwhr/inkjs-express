@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "inkjs": "^1.10.3"
+  },
+  "name": "inkphone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "JZ",
+  "license": "MIT",
+  "private": false
+}
