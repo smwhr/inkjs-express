@@ -32,6 +32,7 @@ app.get('/continue', function(req, res){
       return;
     }catch(e){
       res.status(400).json({ status: "error", message: e.message })
+      return
     }
     
     
