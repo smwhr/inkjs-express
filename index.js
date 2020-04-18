@@ -57,5 +57,17 @@ app.get('/continue', function(req, res){
   res.json({ status: "continued", paragraphs: paragraphs, choices: choices })
 })
 
+app.get('/goto', function(req, res){
+  let knot = req.query.knot;
+
+  try{
+    myStory.ChoosePathString(knot);
+    res.redirect('/continue')
+    return;
+  }catch(e){
+    res.status(400).json({ status: "error", message: e.message })
+  }
+})
+
 
 app.listen(port, () => console.log(`Inkjs-Express listening at http://localhost:${port}`))
